@@ -32,7 +32,7 @@ end
 
 module OpenRegister::Helpers
   def is_entry_resource_field? symbol
-    [:entry_number, :entry_timestamp, :item_hash, :key].include? symbol
+    [:entry_number, :entry_timestamp, :item_hash, :key, :index_entry_number].include? symbol
   end
 
   def augmented_field? symbol
