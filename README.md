@@ -1,5 +1,5 @@
 # openregister-ruby
-A Ruby API to UK government data registers http://www.openregister.org/
+A Ruby API to UK government data registers https://www.openregister.org/
 
 [![Build Status](https://travis-ci.org/robmckinnon/openregister-ruby.svg?branch=master)](https://travis-ci.org/robmckinnon/openregister-ruby)
 
@@ -42,17 +42,17 @@ OpenRegister.registers
 ```
 
 To retrieve all registers for a earlier register phase, pass the phase as a symbol. For example to retrieve all
-registers from [alpha.openregister.org](http://register.alpha.openregister.org/records):
+registers from [alpha.openregister.org](https://register.alpha.openregister.org/records):
 
 ```rb
 OpenRegister.registers :alpha
 ```
 
 Or to retrieve all registers from a specific url pass the base_url as a string. For example to retrieve all registers
-from [alpha.openregister.org](http://register.alpha.openregister.org/records), you can also call:
+from [alpha.openregister.org](https://register.alpha.openregister.org/records), you can also call:
 
 ```rb
-OpenRegister.registers 'http://register.alpha.openregister.org/'
+OpenRegister.registers 'https://register.alpha.openregister.org/'
 ```
 
 Each record is a Ruby object:
@@ -305,7 +305,7 @@ prison = OpenRegister.record 'prison', 'MR', :alpha
 prison._version_changes
 => [
     {"entry-number"=>"77", "name"=>"HMP Morton Hall", "change-date"=>nil},
-    {"entry-number"=>"78", "name"=>"HMIRC Morton Hall", "change-date"=>"2011-05", "-uri"=>"http://prison.alpha.openregister.org/record/MH"}
+    {"entry-number"=>"78", "name"=>"HMIRC Morton Hall", "change-date"=>"2011-05", "-uri"=>"https://prison.alpha.openregister.org/record/MH"}
    ]
 ```
 

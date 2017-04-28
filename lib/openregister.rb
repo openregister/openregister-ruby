@@ -253,7 +253,7 @@ module OpenRegister
       if base_url_or_phase
         host = case base_url_or_phase
                when Symbol
-                 "http://#{register}.#{base_url_or_phase}.openregister.org"
+                 "https://#{register}.#{base_url_or_phase}.openregister.org"
                when String
                  base_url_or_phase.sub('register', register.to_s).chomp('/')
                end

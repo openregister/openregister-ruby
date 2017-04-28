@@ -23,7 +23,7 @@ RSpec.describe OpenRegister do
 
     [
       'https://register.register.gov.uk/records.tsv',
-      'http://register.alpha.openregister.org/records.tsv'
+      'https://register.alpha.openregister.org/records.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/register-records.tsv')
     end
@@ -36,41 +36,41 @@ RSpec.describe OpenRegister do
 
     [
       'https://register.register.gov.uk/record/country.tsv',
-      'http://register.alpha.openregister.org/record/country.tsv'
+      'https://register.alpha.openregister.org/record/country.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/register-country.tsv')
     end
 
     [
-      'http://register.alpha.openregister.org/record/food-premises-rating.tsv'
+      'https://register.alpha.openregister.org/record/food-premises-rating.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/register-food-premises-rating.tsv')
     end
 
     [
-      'http://register.alpha.openregister.org/record/company.tsv'
+      'https://register.alpha.openregister.org/record/company.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/register-company.tsv')
     end
 
     [
-      'http://register.alpha.openregister.org/record/premises.tsv'
+      'https://register.alpha.openregister.org/record/premises.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/register-premises.tsv')
     end
 
     [
-      'http://register.alpha.openregister.org/record/food-premises.tsv'
+      'https://register.alpha.openregister.org/record/food-premises.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/register-food-premises.tsv')
     end
 
-    stub_tsv_request('http://register.alpha.openregister.org/record/food-premises-type.tsv',
+    stub_tsv_request('https://register.alpha.openregister.org/record/food-premises-type.tsv',
       './spec/fixtures/tsv/register-food-premises-type.tsv')
 
     [
       'https://country.register.gov.uk/records.tsv',
-      'http://country.alpha.openregister.org/records.tsv'
+      'https://country.alpha.openregister.org/records.tsv'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/country-records-1.tsv',
         headers: { 'Link': '<?page-index=2&page-size=100>; rel="next"' })
@@ -78,40 +78,40 @@ RSpec.describe OpenRegister do
 
     [
       'https://country.register.gov.uk/records.tsv?page-index=2&page-size=100',
-      'http://country.alpha.openregister.org/records.tsv?page-index=2&page-size=100'
+      'https://country.alpha.openregister.org/records.tsv?page-index=2&page-size=100'
     ].each do |url|
       stub_tsv_request(url, './spec/fixtures/tsv/country-records-2.tsv',
         headers: { 'Link': '<?page-index=1&page-size=100>; rel="previous"' })
     end
 
-    stub_tsv_request('http://food-premises-rating.alpha.openregister.org/records.tsv',
+    stub_tsv_request('https://food-premises-rating.alpha.openregister.org/records.tsv',
       './spec/fixtures/tsv/food-premises-rating-records.tsv')
 
-    stub_tsv_request('http://field.alpha.openregister.org/record/food-premises.tsv',
+    stub_tsv_request('https://field.alpha.openregister.org/record/food-premises.tsv',
       './spec/fixtures/tsv/food-premises.tsv')
 
-    stub_tsv_request('http://food-premises.alpha.openregister.org/record/759332.tsv',
+    stub_tsv_request('https://food-premises.alpha.openregister.org/record/759332.tsv',
       './spec/fixtures/tsv/food-premises-759332.tsv')
 
-    stub_tsv_request('http://company.alpha.openregister.org/record/07228130.tsv',
+    stub_tsv_request('https://company.alpha.openregister.org/record/07228130.tsv',
       './spec/fixtures/tsv/company-07228130.tsv')
 
-    stub_tsv_request('http://premises.alpha.openregister.org/record/15662079000.tsv',
+    stub_tsv_request('https://premises.alpha.openregister.org/record/15662079000.tsv',
       './spec/fixtures/tsv/premises-15662079000.tsv')
 
-    stub_tsv_request('http://food-premises-type.alpha.openregister.org/record/Restaurant.tsv',
+    stub_tsv_request('https://food-premises-type.alpha.openregister.org/record/Restaurant.tsv',
       './spec/fixtures/tsv/food-premises-type-restaurant.tsv')
 
-    stub_tsv_request('http://company.discovery.openregister.org/record/07007398/entries.tsv',
+    stub_tsv_request('https://company.discovery.openregister.org/record/07007398/entries.tsv',
       './spec/fixtures/tsv/company-07007398-entries.tsv')
 
-    stub_tsv_request('http://company.discovery.openregister.org/item/sha-256:cbe10411a9c0d760dee3a3f5aca27884702bdb806b60e15974953b1b62982297.tsv',
+    stub_tsv_request('https://company.discovery.openregister.org/item/sha-256:cbe10411a9c0d760dee3a3f5aca27884702bdb806b60e15974953b1b62982297.tsv',
       './spec/fixtures/tsv/company-sha-256-cbe10411a9c0d760dee3a3f5aca27884702bdb806b60e15974953b1b62982297.tsv')
 
-    stub_tsv_request('http://company.discovery.openregister.org/item/sha-256:d895d4d4a41c2b1b1ac07065174292790633e2eb7c4c20d7bf0b5f77798f03d3.tsv',
+    stub_tsv_request('https://company.discovery.openregister.org/item/sha-256:d895d4d4a41c2b1b1ac07065174292790633e2eb7c4c20d7bf0b5f77798f03d3.tsv',
       './spec/fixtures/tsv/company-sha-256-d895d4d4a41c2b1b1ac07065174292790633e2eb7c4c20d7bf0b5f77798f03d3.tsv')
 
-    stub_tsv_request('http://company.discovery.openregister.org/item/sha-256:6e21329956c6fa807e3a1a4fb5ce40a037917dfafbbeeeb45d2880745aef2850.tsv',
+    stub_tsv_request('https://company.discovery.openregister.org/item/sha-256:6e21329956c6fa807e3a1a4fb5ce40a037917dfafbbeeeb45d2880745aef2850.tsv',
       './spec/fixtures/tsv/company-sha-256-6e21329956c6fa807e3a1a4fb5ce40a037917dfafbbeeeb45d2880745aef2850.tsv')
   end
 
@@ -172,22 +172,22 @@ RSpec.describe OpenRegister do
 
   describe 'retrieve registers index when passed base_url' do
     it 'returns array of Ruby objects with from_openregister set true' do
-      records = OpenRegister.registers 'http://register.alpha.openregister.org/'
+      records = OpenRegister.registers 'https://register.alpha.openregister.org/'
       expect(records).to be_an(Array)
       records.each { |r| expect(r).to be_an('OpenRegister::Register'.constantize) }
-      records.each { |r| expect(r._base_url_or_phase).to eq('http://register.alpha.openregister.org/') }
+      records.each { |r| expect(r._base_url_or_phase).to eq('https://register.alpha.openregister.org/') }
     end
 
     it 'calls correct url' do
       expect(OpenRegister).to receive(:retrieve).with(
-        'http://register.alpha.openregister.org/records', :register,
-        'http://register.alpha.openregister.org/', nil, true, 100)
-      OpenRegister.registers 'http://register.alpha.openregister.org/'
+        'https://register.alpha.openregister.org/records', :register,
+        'https://register.alpha.openregister.org/', nil, true, 100)
+      OpenRegister.registers 'https://register.alpha.openregister.org/'
     end
 
     it 'sets _uri method on register returning uri correctly' do
-      uri = OpenRegister.registers('http://register.alpha.openregister.org/')[1]._uri
-      expect(uri).to eq('http://country.alpha.openregister.org/')
+      uri = OpenRegister.registers('https://register.alpha.openregister.org/')[1]._uri
+      expect(uri).to eq('https://country.alpha.openregister.org/')
     end
   end
 
@@ -201,14 +201,14 @@ RSpec.describe OpenRegister do
 
     it 'calls correct url' do
       expect(OpenRegister).to receive(:retrieve).with(
-        'http://register.alpha.openregister.org/records', :register,
+        'https://register.alpha.openregister.org/records', :register,
         :alpha, nil, true, 100)
       OpenRegister.registers :alpha
     end
 
     it 'sets _uri method on register returning uri correctly' do
       uri = OpenRegister.registers(:alpha)[1]._uri
-      expect(uri).to eq('http://country.alpha.openregister.org/')
+      expect(uri).to eq('https://country.alpha.openregister.org/')
     end
   end
 
@@ -344,21 +344,21 @@ RSpec.describe OpenRegister do
   end
 
   describe 'retrieved register record when passed base_url' do
-    subject { OpenRegister.registers('http://register.alpha.openregister.org/')[1]._all_records[0] }
+    subject { OpenRegister.registers('https://register.alpha.openregister.org/')[1]._all_records[0] }
 
     include_examples 'has record attributes'
-    include_examples 'has attributes', { _base_url_or_phase: 'http://register.alpha.openregister.org/' }
+    include_examples 'has attributes', { _base_url_or_phase: 'https://register.alpha.openregister.org/' }
   end
 
   describe 'retrieve register by name' do
-    subject { OpenRegister.register('food-premises-rating', 'http://register.alpha.openregister.org/') }
+    subject { OpenRegister.register('food-premises-rating', 'https://register.alpha.openregister.org/') }
 
     it 'returns register' do
       expect(subject.register).to eq('food-premises-rating')
     end
 
     it 'has _uri method returning uri correctly' do
-      expect(subject._uri).to eq('http://food-premises-rating.alpha.openregister.org/')
+      expect(subject._uri).to eq('https://food-premises-rating.alpha.openregister.org/')
     end
   end
 
@@ -447,7 +447,7 @@ RSpec.describe OpenRegister do
     let(:register) { 'food-premises' }
     let(:record) { '759332' }
 
-    subject { OpenRegister.record(register, record, 'http://register.alpha.openregister.org/') }
+    subject { OpenRegister.record(register, record, 'https://register.alpha.openregister.org/') }
 
     include_examples 'has attributes', {
       business: "company:07228130",
@@ -462,7 +462,7 @@ RSpec.describe OpenRegister do
     }
 
     it 'returns its uri' do
-      expect(subject._uri).to eq('http://food-premises.alpha.openregister.org/record/759332')
+      expect(subject._uri).to eq('https://food-premises.alpha.openregister.org/record/759332')
     end
 
     it 'returns its curie' do
