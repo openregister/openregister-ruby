@@ -4,6 +4,7 @@ RSpec.describe OpenRegister do
 
   def stub_tsv_request url, fixture, headers: {}
     stub_request(:get, url).
+      with(headers: { 'User-Agent' => 'openregister-ruby' }).
       to_return(status: 200,
         body: File.new(fixture),
         headers: { 'Content-Type': 'text/tab-separated-values;charset=UTF-8' }.merge(headers) )
