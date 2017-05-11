@@ -32,3 +32,4 @@ Gemfile.lock
 .rvmrc
 pkg
 rdoc
+.idea
