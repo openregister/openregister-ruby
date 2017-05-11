@@ -268,7 +268,7 @@ module OpenRegister
         if cache && (stored = cache.read(url)) && stored.present?
           stored
         else
-          response = RestClient.get(url, 'User-Agent' => 'openregister-ruby')
+          response = RestClient.get(url, 'User-Agent' => "openregister-ruby/#{OpenRegister::VERSION}")
           body = response.body
           link_header = response.headers[:link]
           rel_next = link_header ? links(link_header)[:next] : nil
