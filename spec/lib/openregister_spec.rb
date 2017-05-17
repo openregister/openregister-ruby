@@ -3,8 +3,9 @@ require_relative '../../lib/openregister'
 RSpec.describe OpenRegister do
 
   def stub_tsv_request url, fixture, headers: {}
-    stub_request(:get, url).
-      to_return(status: 200,
+    stub_request(:get, url)
+      .with(headers: { 'User-Agent' => "openregister-ruby/#{OpenRegister::VERSION}"})
+      .to_return(status: 200,
         body: File.new(fixture),
         headers: { 'Content-Type': 'text/tab-separated-values;charset=UTF-8' }.merge(headers) )
   end

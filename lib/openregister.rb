@@ -265,16 +265,16 @@ module OpenRegister
 
     def response_list url, all, cache, &block
       tsv, rel_next =
-            if cache && (stored = cache.read(url)) && stored.present?
-              stored
-            else
-              response = RestClient.get(url)
-              body = response.body
-              link_header = response.headers[:link]
-              rel_next = link_header ? links(link_header)[:next] : nil
-              cache.write url, [body, rel_next] if cache && body
-              [body, rel_next]
-            end
+        if cache && (stored = cache.read(url)) && stored.present?
+          stored
+        else
+          response = RestClient.get(url, 'User-Agent' => "openregister-ruby/#{OpenRegister::VERSION}")
+          body = response.body
+          link_header = response.headers[:link]
+          rel_next = link_header ? links(link_header)[:next] : nil
+          cache.write url, [body, rel_next] if cache && body
+          [body, rel_next]
+        end
 
       yield tsv
       if all && rel_next
