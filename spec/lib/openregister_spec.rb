@@ -103,6 +103,9 @@ RSpec.describe OpenRegister do
     stub_tsv_request('https://food-premises-type.alpha.openregister.org/record/Restaurant.tsv',
       './spec/fixtures/tsv/food-premises-type-restaurant.tsv')
 
+    stub_tsv_request('https://country.register.gov.uk/entries.tsv',
+      './spec/fixtures/tsv/country-entries.tsv')
+
     stub_tsv_request('https://company.discovery.openregister.org/record/07007398/entries.tsv',
       './spec/fixtures/tsv/company-07007398-entries.tsv')
 
@@ -396,7 +399,7 @@ RSpec.describe OpenRegister do
     }
   end
 
-  describe 'retrieve specific entries from a given register' do
+  describe 'retrieve specific entries from a given record' do
     let(:register) { 'company' }
     let(:record) { '07007398' }
 
@@ -605,6 +608,16 @@ RSpec.describe OpenRegister do
           expect(display.size).to eq 2
           expect(display[0]).to eq "ENTERPRISE SOUTH LIVERPOOL ACADEMY 2009-12-21 - 2015-03-08"
           expect(display[1]).to eq "GARSTON ENTERPRISE ACADEMY 2009-02-09 - 2009-12-21"
+        end
+      end
+
+      describe 'retrieve a register\'s entries first page only via #_entries' do
+        it 'returns entries as Ruby objects' do
+          entries = OpenRegister.registers[1]._entries
+          entries.each do |entry|
+            expect(entry).to be_an(OpenRegister::Country)
+          end
+          expect(entries.size).to eq 100
         end
       end
     end

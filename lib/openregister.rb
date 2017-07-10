@@ -15,6 +15,10 @@ class OpenRegister::Register
     OpenRegister::records_for register.to_sym, try(:_base_url_or_phase)
   end
 
+  def _entries
+    OpenRegister::entries_for register.to_sym, try(:_base_url_or_phase)
+  end
+
   def _fields
     fields.map do |field|
       OpenRegister.field field.to_sym, try(:_base_url_or_phase)
@@ -130,6 +134,11 @@ module OpenRegister
     def entries register, record, base_url_or_phase=nil
       url = url_for "record/#{record}/entries", register, base_url_or_phase
       retrieve(url, :entry, base_url_or_phase, @cache)
+    end
+
+    def entries_for register, base_url_or_phase=nil
+      url = url_for :entries, register, base_url_or_phase
+      retrieve(url, register, base_url_or_phase, @cache)
     end
 
     def versions register, record, base_url_or_phase=nil
