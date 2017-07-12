@@ -15,6 +15,10 @@ class OpenRegister::Register
     OpenRegister::records_for register.to_sym, try(:_base_url_or_phase)
   end
 
+  def _all_entries page_size: 100
+    OpenRegister::entries_for register.to_sym, try(:_base_url_or_phase), all: true, page_size: page_size
+  end
+
   def _entries
     OpenRegister::entries_for register.to_sym, try(:_base_url_or_phase)
   end
@@ -136,9 +140,9 @@ module OpenRegister
       retrieve(url, :entry, base_url_or_phase, @cache)
     end
 
-    def entries_for register, base_url_or_phase=nil
+    def entries_for register, base_url_or_phase=nil, all: false, page_size: 100
       url = url_for :entries, register, base_url_or_phase
-      retrieve(url, register, base_url_or_phase, @cache)
+      retrieve url, register, base_url_or_phase, @cache, all, page_size
     end
 
     def versions register, record, base_url_or_phase=nil
