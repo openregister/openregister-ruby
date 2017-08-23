@@ -1,5 +1,5 @@
 # openregister-ruby
-A Ruby API to UK government data registers https://www.openregister.org/
+A Ruby API to UK government data registers https://registers.cloudapps.digital/
 
 [![Build Status](https://travis-ci.org/robmckinnon/openregister-ruby.svg?branch=master)](https://travis-ci.org/robmckinnon/openregister-ruby)
 
