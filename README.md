@@ -8,7 +8,7 @@ A Ruby API to UK government data registers https://registers.cloudapps.digital/
 In your Gemfile add:
 
 ```rb
-gem 'openregister-ruby', git: 'https://github.com/robmckinnon/openregister-ruby.git'
+gem 'openregister-ruby', git: 'https://github.com/openregister/openregister-ruby-client.git'
 ```
 
 To use:
