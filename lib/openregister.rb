@@ -1,8 +1,11 @@
 require 'morph'
 require 'rest-client'
+require 'json'
+require 'registers_client'
+require 'register_client'
 
 module OpenRegister
-  VERSION = '0.0.1' unless defined? OpenRegister::VERSION
+  VERSION = '0.1.0' unless defined? OpenRegister::VERSION
 end
 
 class OpenRegister::Register
@@ -97,7 +100,6 @@ end
 
 module OpenRegister
   class << self
-
     def cache= cache
       @cache = cache
     end
@@ -141,7 +143,7 @@ module OpenRegister
       retrieve(url, register, base_url_or_phase, @cache)
     end
 
-    def versions register, record, base_url_or_phase=nil
+    def versions(register, record, base_url_or_phase = nil)
       if record.respond_to?(:_curie)
         object = record
         record = record._curie.split(':').last
