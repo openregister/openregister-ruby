@@ -12,6 +12,6 @@ group :test do
   end
   gem 'webmock'
 end
-
+gem 'mini_cache'
 gem 'morph', '>= 0.5.1'
 gem 'rest-client', '>= 2.0.1'

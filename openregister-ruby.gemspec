@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name = "openregister-ruby".freeze
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
@@ -24,17 +24,20 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<morph>.freeze, ["~> 0.5.0"])
       s.add_runtime_dependency(%q<rest-client>.freeze, ["~> 2"])
+      s.add_runtime_dependency(%q<mini_cache>.freeze, ["~> 1.1.0"])
       s.add_development_dependency(%q<guard-rspec>.freeze, ["~> 4"])
       s.add_development_dependency(%q<webmock>.freeze, ["~> 2"])
     else
       s.add_dependency(%q<morph>.freeze, ["~> 0.5.0"])
       s.add_dependency(%q<rest-client>.freeze, ["~> 2"])
+      s.add_dependency(%q<mini_cache>.freeze, ["~> 1.1.0"])
       s.add_dependency(%q<guard-rspec>.freeze, ["~> 4"])
       s.add_dependency(%q<webmock>.freeze, ["~> 2"])
     end
   else
     s.add_dependency(%q<morph>.freeze, ["~> 0.5.0"])
     s.add_dependency(%q<rest-client>.freeze, ["~> 2"])
+    s.add_dependency(%q<mini_cache>.freeze, ["~> 1.1.0"])
     s.add_dependency(%q<guard-rspec>.freeze, ["~> 4"])
     s.add_dependency(%q<webmock>.freeze, ["~> 2"])
   end
