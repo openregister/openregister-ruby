@@ -50,6 +50,14 @@ module OpenRegister
       get_records.select { |record| record[:item]['end-date'].present? }
     end
 
+    def refresh_data
+      @store.set('data') do
+        rsf = download_rsf(@register, @phase)
+        data = parse_rsf(rsf)
+        MiniCache::Data.new(data, expires_in: @config_options[:cache_duration])
+      end
+    end
+
     private
 
     def get_data
