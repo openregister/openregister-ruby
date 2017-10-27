@@ -215,7 +215,9 @@ module OpenRegister
           items = Morph.from_tsv(tsv, type, OpenRegister)
           items.each do |item|
             additional_modification! item, base_url_or_phase, uri
-            results.push item
+            unless item.key.nil?
+              results.push item
+            end
           end
         end
       end
