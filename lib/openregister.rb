@@ -1,11 +1,11 @@
 require 'morph'
 require 'rest-client'
 require 'json'
-require 'registers_client'
-require 'register_client'
+require_relative './registers_client'
+require_relative './register_client'
 
 module OpenRegister
-  VERSION = '0.1.0' unless defined? OpenRegister::VERSION
+  VERSION = '0.2.3' unless defined? OpenRegister::VERSION
 end
 
 class OpenRegister::Register
