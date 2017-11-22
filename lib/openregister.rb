@@ -263,7 +263,7 @@ module OpenRegister
     end
 
     def url_for path, register, base_url_or_phase
-      escaped_path = URI.escape(path)
+      escaped_path = URI.escape(path.to_s)
       if base_url_or_phase
         host = case base_url_or_phase
                when Symbol

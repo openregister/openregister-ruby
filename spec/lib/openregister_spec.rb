@@ -620,7 +620,14 @@ RSpec.describe OpenRegister do
           expect(entries.size).to eq 100
         end
       end
+
+      describe 'URI encoding' do
+        it 'URI encodes a key with spaces' do
+          url = OpenRegister.send(:url_for, 'foo bar', 'country', :beta)
+          expect(url).to eq'https://country.beta.openregister.org/foo%20bar'
+        end
+      end
+
     end
   end
-
 end
