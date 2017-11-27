@@ -625,6 +625,7 @@ RSpec.describe OpenRegister do
         it 'URI encodes a key with spaces' do
           url = OpenRegister.send(:url_for, 'foo bar', 'country', :beta)
           expect(url).to eq'https://country.beta.openregister.org/foo%20bar'
+          expect(URI(url)).to be_instance_of(URI::HTTPS) 
         end
       end
 
