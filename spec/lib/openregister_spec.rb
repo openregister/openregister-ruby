@@ -627,8 +627,14 @@ RSpec.describe OpenRegister do
           expect(url).to eq'https://country.beta.openregister.org/foo%20bar'
           expect(URI(url)).to be_instance_of(URI::HTTPS) 
         end
-      end
 
+        it 'Accepts a string as phase' do
+          url = OpenRegister.send(:url_for, 'record/SU.tsv', 'country', 'https://register.test.openregister.org')
+          expect(url).to eq'https://country.test.openregister.org/record/SU.tsv'
+          expect(URI(url)).to be_instance_of(URI::HTTPS) 
+        end
+      end
     end
   end
 end
+
