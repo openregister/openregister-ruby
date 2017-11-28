@@ -263,6 +263,7 @@ module OpenRegister
     end
 
     def url_for path, register, base_url_or_phase
+      escaped_path = URI.escape(path.to_s)
       if base_url_or_phase
         host = case base_url_or_phase
                when Symbol
@@ -270,9 +271,9 @@ module OpenRegister
                when String
                  base_url_or_phase.sub('register', register.to_s).chomp('/')
                end
-        "#{host}/#{path}"
+        "#{host}/#{escaped_path}"
       else
-        "https://#{register}.register.gov.uk/#{path}"
+        "https://#{register}.register.gov.uk/#{escaped_path}"
       end
     end
 

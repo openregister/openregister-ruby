@@ -117,6 +117,10 @@ RSpec.describe OpenRegister do
 
     stub_tsv_request('https://company.discovery.openregister.org/item/sha-256:6e21329956c6fa807e3a1a4fb5ce40a037917dfafbbeeeb45d2880745aef2850.tsv',
       './spec/fixtures/tsv/company-sha-256-6e21329956c6fa807e3a1a4fb5ce40a037917dfafbbeeeb45d2880745aef2850.tsv')
+
+    stub_tsv_request('https://country.alpha.openregister.org/record/foo%20bar.tsv',
+      './spec/fixtures/tsv/country-entries.tsv')
+  
   end
 
   describe 'retrieve registers index' do
@@ -620,7 +624,32 @@ RSpec.describe OpenRegister do
           expect(entries.size).to eq 100
         end
       end
+
+      describe 'URI encoding' do
+        it 'URI encodes a key with spaces' do
+          url = OpenRegister.send(:url_for, 'foo bar', 'country', :beta)
+          expect(url).to eq'https://country.beta.openregister.org/foo%20bar'
+          expect(URI(url)).to be_instance_of(URI::HTTPS) 
+        end
+
+        it 'Accepts a string as phase' do
+          url = OpenRegister.send(:url_for, 'record/SU.tsv', 'country', 'https://register.test.openregister.org')
+          expect(url).to eq'https://country.test.openregister.org/record/SU.tsv'
+          expect(URI(url)).to be_instance_of(URI::HTTPS) 
+        end
+      end
+           
+      describe 'record request with spaces' do
+        let(:register) { 'country' }
+        let(:record) { 'foo bar' }
+    
+        subject { OpenRegister.record(register, record, 'https://register.alpha.openregister.org/') }
+    
+        it 'returns encoded URI' do
+          expect(subject._uri).to eq('https://country.alpha.openregister.org/record/foo%20bar')
+        end
+      end
     end
   end
-
 end
+
